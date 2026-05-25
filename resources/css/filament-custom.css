@@ -1,0 +1,463 @@
+/* ═══════════════════════════════════════════════════════════
+   FILAMENT CUSTOMIZATION - SENAI Design
+   Tema: Escuro, Quadrado, Transparente, Clássico
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* Cores SENAI */
+  --senai-primary: #1a1a2e;
+  --senai-secondary: #16213e;
+  --senai-accent: #0f3460;
+  --senai-red: #E30613;
+  --senai-border: rgba(255, 255, 255, 0.08);
+  --senai-border-hover: rgba(255, 255, 255, 0.12);
+  --senai-text-primary: #f4f4f5;
+  --senai-text-secondary: #a1a1aa;
+  --senai-text-tertiary: #71717a;
+  --senai-bg-overlay: rgba(26, 26, 46, 0.5);
+  --senai-glass: rgba(22, 33, 62, 0.4);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LOGIN PAGE CUSTOMIZATION
+   ═══════════════════════════════════════════════════════════ */
+
+/* Wrapper da página de login */
+[data-filament-page="auth.login"] {
+  background: linear-gradient(135deg, #09090b 0%, #1a1a2e 50%, #16213e 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Grid texture background */
+[data-filament-page="auth.login"]::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* Glow effects */
+[data-filament-page="auth.login"]::after {
+  content: '';
+  position: fixed;
+  width: 800px;
+  height: 800px;
+  top: -200px;
+  right: -300px;
+  background: radial-gradient(circle, rgba(227, 6, 19, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Container principal */
+.filament-page {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Card de login */
+.filament-page-wrapper {
+  background: var(--senai-glass);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid var(--senai-border);
+  border-radius: 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  padding: 3.5rem;
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+}
+
+/* Logo/header */
+.filament-page-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--senai-red),
+    transparent
+  );
+  opacity: 0.5;
+}
+
+/* Heading do login */
+.filament-page h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--senai-text-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+/* Subheading */
+.filament-page .text-sm {
+  color: var(--senai-text-secondary);
+  font-size: 13px;
+}
+
+/* Form container */
+.filament-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Input fields */
+.filament-page input[type="email"],
+.filament-page input[type="password"] {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--senai-border);
+  border-radius: 0;
+  padding: 12px 16px;
+  color: var(--senai-text-primary);
+  font-size: 14px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.filament-page input[type="email"]::placeholder,
+.filament-page input[type="password"]::placeholder {
+  color: var(--senai-text-tertiary);
+}
+
+.filament-page input[type="email"]:focus,
+.filament-page input[type="password"]:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--senai-border-hover);
+  box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.08);
+}
+
+/* Labels */
+.filament-page label {
+  color: var(--senai-text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Submit button */
+.filament-page button[type="submit"] {
+  background: var(--senai-red);
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.filament-page button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.filament-page button[type="submit"]:hover {
+  background: #b0041a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(227, 6, 19, 0.3);
+}
+
+.filament-page button[type="submit"]:hover::before {
+  opacity: 1;
+}
+
+/* Links */
+.filament-page a {
+  color: var(--senai-red);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.filament-page a:hover {
+  color: #f87171;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FILAMENT PANEL CUSTOMIZATION
+   ═══════════════════════════════════════════════════════════ */
+
+/* Background principal */
+.filament-main-container {
+  background: #09090b;
+}
+
+/* Sidebar */
+.filament-sidebar {
+  background: linear-gradient(180deg, var(--senai-secondary) 0%, var(--senai-primary) 100%);
+  border-right: 1px solid var(--senai-border);
+  padding-top: 1.5rem;
+}
+
+.filament-sidebar-item {
+  border-radius: 0;
+  margin: 0.25rem 0;
+  transition: all 0.2s ease;
+  color: var(--senai-text-secondary);
+  border-left: 3px solid transparent;
+  padding-left: 1.25rem;
+}
+
+.filament-sidebar-item:hover {
+  background: rgba(227, 6, 19, 0.08);
+  border-left-color: var(--senai-red);
+  color: var(--senai-text-primary);
+}
+
+.filament-sidebar-item.active {
+  background: rgba(227, 6, 19, 0.12);
+  border-left-color: var(--senai-red);
+  color: var(--senai-red);
+  font-weight: 600;
+}
+
+/* Header/Top bar */
+.filament-topbar {
+  background: var(--senai-secondary);
+  border-bottom: 1px solid var(--senai-border);
+  padding: 1rem 2rem;
+}
+
+/* Buttons */
+.fi-btn {
+  border-radius: 0;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.fi-btn-primary {
+  background: var(--senai-red);
+  color: white;
+}
+
+.fi-btn-primary:hover {
+  background: #b0041a;
+  box-shadow: 0 4px 12px rgba(227, 6, 19, 0.3);
+}
+
+.fi-btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--senai-text-primary);
+  border: 1px solid var(--senai-border);
+}
+
+.fi-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--senai-border-hover);
+}
+
+/* Cards/Sections */
+.fi-section,
+.fi-fieldset {
+  background: var(--senai-glass);
+  border: 1px solid var(--senai-border);
+  border-radius: 0;
+  backdrop-filter: blur(20px);
+}
+
+.fi-section:hover {
+  border-color: var(--senai-border-hover);
+}
+
+/* Tables */
+.fi-table {
+  background: var(--senai-glass);
+  border: 1px solid var(--senai-border);
+  border-radius: 0;
+}
+
+.fi-table th {
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--senai-text-secondary);
+  border-bottom: 1px solid var(--senai-border);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.fi-table tr:hover {
+  background: rgba(227, 6, 19, 0.04);
+}
+
+/* Form inputs */
+.fi-input,
+.fi-textarea,
+.fi-select {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--senai-border);
+  border-radius: 0;
+  color: var(--senai-text-primary);
+  transition: all 0.2s ease;
+}
+
+.fi-input:focus,
+.fi-textarea:focus,
+.fi-select:focus {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--senai-red);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.1);
+}
+
+.fi-input::placeholder {
+  color: var(--senai-text-tertiary);
+}
+
+/* Labels */
+.fi-label {
+  color: var(--senai-text-secondary);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Badges/Tags */
+.fi-badge {
+  border-radius: 0;
+  background: rgba(227, 6, 19, 0.15);
+  color: var(--senai-red);
+  border: 1px solid rgba(227, 6, 19, 0.3);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+/* Icons - Substituir por ícones clássicos */
+.fi-icon {
+  stroke-width: 2;
+  color: currentColor;
+}
+
+/* Responsive - Layout horizontal no desktop */
+@media (min-width: 1024px) {
+  .filament-page-wrapper {
+    padding: 4rem;
+  }
+
+  .filament-sidebar {
+    width: 280px;
+  }
+
+  .filament-main-content {
+    flex: 1;
+    padding: 2rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .filament-page-wrapper {
+    padding: 2rem;
+    max-width: 100%;
+  }
+
+  .filament-sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    z-index: 40;
+    width: 240px;
+  }
+
+  .filament-sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+/* Animações suaves */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.filament-page,
+.filament-section {
+  animation: slideIn 0.3s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   UTILITY - Padrão clássico e minimalista
+   ═══════════════════════════════════════════════════════════ */
+
+/* Remove bordas arredondadas extras */
+* {
+  --tw-rounded: 0;
+}
+
+/* Tipografia limpa e clara */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.5px;
+  color: var(--senai-text-primary);
+  font-weight: 700;
+}
+
+/* Focus states*/
+:focus-visible {
+  outline: 2px solid var(--senai-red);
+  outline-offset: 2px;
+}
+
+/* Scrollbar customizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\Auth\Login;
 use App\Filament\Widgets\AutorizacoesPendentesWidget;
 use App\Filament\Widgets\ResumoHojeWidget;
 use App\Filament\Widgets\ResumoHojeProfessorWidget;
@@ -32,9 +33,9 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            ->login(Login::class)
             ->colors([
-                'primary' => Color::hex('#1e3a5f'),
+                'primary' => Color::hex('#E30613'),
                 'warning' => Color::Amber,
                 'danger'  => Color::Red,
                 'success' => Color::Teal,
@@ -44,6 +45,7 @@ class AdminPanelProvider extends PanelProvider
             ->darkMode(true)
             ->topNavigation(false)
             ->sidebarCollapsibleOnDesktop(true)
+            ->font('Inter')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([
@@ -80,12 +82,14 @@ class AdminPanelProvider extends PanelProvider
                 <div style="position:absolute;top:1.5rem;left:1.75rem;z-index:10;">
                     <a href="/"
                        style="display:inline-flex;align-items:center;gap:6px;
-                              color:#6b7280;font-size:13px;font-weight:500;
+                              color:#a1a1aa;font-size:12px;font-weight:600;
                               text-decoration:none;
-                              padding:6px 12px;border-radius:8px;
-                              transition:color .15s,background .15s;"
-                       onmouseover="this.style.color=\'#1d6fce\';this.style.background=\'rgba(29,111,206,.07)\'"
-                       onmouseout="this.style.color=\'#6b7280\';this.style.background=\'transparent\'">
+                              padding:6px 12px;border-radius:0;
+                              transition:all .2s;
+                              letter-spacing:0.5px;
+                              text-transform:uppercase;"
+                       onmouseover="this.style.color=\'#E30613\';this.style.transform=\'translateX(-4px)\'"
+                       onmouseout="this.style.color=\'#a1a1aa\';this.style.transform=\'translateX(0)\'">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                              stroke="currentColor" stroke-width="2"
                              stroke-linecap="round" stroke-linejoin="round">
@@ -95,6 +99,11 @@ class AdminPanelProvider extends PanelProvider
                     </a>
                 </div>
             '),
+        );
+
+        FilamentView::registerRenderHook(
+            PanelsRenderHook::HEAD_END,
+            fn (): string => Blade::render('<link rel="stylesheet" href="{{ asset(\'css/filament-custom.css\') }}" />'),
         );
     }
 }

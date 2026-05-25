@@ -42,21 +42,21 @@ class DatabaseSeeder extends Seeder
 
         $admin = User::factory()->create([
             'name'     => 'Admin SAFE',
-            'email'    => 'admin@safe.dev',
+            'email'    => 'admin@senai.limeira',
             'password' => Hash::make('password'),
         ]);
         $admin->assignRole('admin');
 
         $aqv = User::factory()->create([
             'name'     => 'AQV SAFE',
-            'email'    => 'aqv@safe.dev',
+            'email'    => 'aqv@senai.limeira',
             'password' => Hash::make('password'),
         ]);
         $aqv->assignRole('aqv');
 
         $professor = User::factory()->create([
             'name'     => 'Professor SAFE',
-            'email'    => 'professor@safe.dev',
+            'email'    => 'professor@senai.limeira',
             'password' => Hash::make('password'),
         ]);
         $professor->assignRole('professor');
@@ -67,7 +67,7 @@ class DatabaseSeeder extends Seeder
 
         $portaria = User::factory()->create([
             'name'     => 'Portaria SAFE',
-            'email'    => 'portaria@safe.dev',
+            'email'    => 'portaria@senai.limeira',
             'password' => Hash::make('password'),
         ]);
         $portaria->assignRole('portaria');
